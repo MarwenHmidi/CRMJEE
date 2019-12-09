@@ -1,0 +1,77 @@
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+		xmlns:ui="http://java.sun.com/jsf/facelets">
+<body class="login-body">
+
+<meta http-equiv="content-type" content="text/html;charset=utf-8" /><!-- /Added by HTTrack -->
+            
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+            
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+            
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" />
+            
+<meta name="apple-mobile-web-app-capable" content="yes" /><link type="text/css" rel="stylesheet" href="javax.faces.resource/theme.css38e8.css?ln=primefaces-serenity-bluegrey" /><link type="text/css" rel="stylesheet" href="javax.faces.resource/fa/font-awesome.css68f8.css?ln=primefaces&amp;v=7.0" /><link type="text/css" rel="stylesheet" href="javax.faces.resource/components.css68f8.css?ln=primefaces&amp;v=7.0" />
+<script type="text/javascript" src="javax.faces.resource/jquery/jquery.js68f8.xhtml?ln=primefaces&amp;v=7.0"></script>
+<script type="text/javascript" src="javax.faces.resource/core.js68f8.xhtml?ln=primefaces&amp;v=7.0"></script>
+<script type="text/javascript" src="javax.faces.resource/components.js68f8.xhtml?ln=primefaces&amp;v=7.0"></script>
+<script type="text/javascript" src="javax.faces.resource/jquery/jquery-plugins.js68f8.xhtml?ln=primefaces&amp;v=7.0"></script><link type="text/css" rel="stylesheet" href="javax.faces.resource/css/layout-moody.css049b.css?ln=serenity-layout" />
+<script type="text/javascript">if(window.PrimeFaces){PrimeFaces.settings.locale='en_US';PrimeFaces.settings.projectStage='Development';}</script>
+        
+<title>PrimeFaces Serenity</title>
+<script type="text/javascript" src="javax.faces.resource/js/layout.js049b.xhtml?ln=serenity-layout"></script>
+<script type="text/javascript" src="javax.faces.resource/js/ripple.js049b.xhtml?ln=serenity-layout"></script>
+        
+<div class="login-panel ui-fluid">
+            
+<div class="login-panel-header"><img id="j_idt9" src="javax.faces.resource/images/logo-slim.png049b.png?ln=serenity-layout" alt="" />
+            </div>
+            
+<div class="login-panel-content">
+                
+<div class="ui-g">
+                    
+<div class="ui-g-12">
+                        
+<h1>Sign-in to Serenity Network</h1>
+                    </div>
+                    <h:form id="form">
+                    
+<div class="ui-g-12"><span class="md-inputfield"><h:inputText id="j_idt12" name="j_idt12" type="text" class="ui-inputfield ui-inputtext ui-widget ui-state-default ui-corner-all" value="#{loginBean.login}" autocomplete="off" />
+<script id="j_idt12_s" type="text/javascript" >$(function(){PrimeFaces.cw("InputText","widget_j_idt12",{id:"j_idt12",maxlength:-2147483648});});</script>
+                            <label>Username</label></span>
+                    </div>
+                    
+<div class="ui-g-12"><span class="md-inputfield"><h:inputSecret id="j_idt16" name="j_idt16" type="password" value="#{loginBean.password}" class="ui-inputfield ui-password ui-widget ui-state-default ui-corner-all" autocomplete="off" />
+<script id="j_idt16_s" type="text/javascript" >$(function(){PrimeFaces.cw("Password","widget_j_idt16",{id:"j_idt16"});});</script>
+                            <label>Password</label></span>
+                    </div>
+                    
+<div class="ui-g-6 ">
+<div id="rememberme" class="ui-selectbooleancheckbox ui-chkbox ui-widget">
+<div class="ui-helper-hidden-accessible"><input id="rememberme_input" name="rememberme_input" type="checkbox" autocomplete="off" aria-hidden="true" aria-checked="false" /></div>
+<div class="ui-chkbox-box ui-widget ui-corner-all ui-state-default"><span class="ui-chkbox-icon ui-icon ui-icon-blank ui-c" /></div></div>
+<script id="rememberme_s" type="text/javascript">$(function(){PrimeFaces.cw("SelectBooleanCheckbox","widget_rememberme",{id:"rememberme"});});</script><label id="j_idt19" class="ui-outputlabel ui-widget" for="rememberme_input">Remember Me?</label>
+                    </div>
+                   <h:commandButton id="btn" value="Connexion"
+					action="#{loginBean.doLogin()}" />
+                    <h:message for="btn" />
+                    </h:form>
+                  
+                    
+                  
+<div class="ui-g-6 password-reset"><a href="/Pi_dev-web/pages/dashboard.jsf">Reset Password</a>
+                    </div>
+                   
+<div class="ui-g-12"><button id="j_idt24" name="j_idt24" type="button" class="ui-button ui-widget ui-state-default ui-corner-all ui-button-text-icon-left" onclick="#{loginBean.doLogin()}"><span class="ui-button-icon-left ui-icon ui-c ui-icon-person" /><span class="ui-button-text ui-c">Sign In</span></button>
+<script id="j_idt24_s" type="text/javascript">$(function(){PrimeFaces.cw("Button","widget_j_idt24",{id:"j_idt24"});});</script>
+                    </div>
+                    
+<div class="ui-g-12">
+                        Don't have an account? <a href="/Pi_dev-web/pages/welcome.jsf">Sign Up</a> now.
+                    </div>
+                </div>
+            </div>
+        </div>
+</body></ui:composition>
