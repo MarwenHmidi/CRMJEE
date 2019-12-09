@@ -45,7 +45,7 @@
 											class="ui-datatable ui-widget ui-datatable-reflow">
 											<div
 												class="ui-datatable-header ui-widget-header ui-corner-top">List
-												of Employe Skills</div>
+												of the new Clients</div>
 											<div>
 												<table role="grid">
 													<thead id="form:j_idt48_head">
@@ -56,9 +56,24 @@
 															<th id="form:j_idt48:j_idt50" role="columnheader"
 																aria-label="Id" scope="col"><span
 																class="ui-column-title">nom</span></th>
+																<th id="form:j_idt48:j_idt50" role="columnheader"
+																aria-label="Id" scope="col"><span
+																class="ui-column-title">lastName</span></th>
 															<th id="form:j_idt48:j_idt50" role="columnheader"
 																aria-label="Id" scope="col"><span
 																class="ui-column-title">birthDate</span></th>
+																<th id="form:j_idt48:j_idt50" role="columnheader"
+																aria-label="Id" scope="col"><span
+																class="ui-column-title">email</span></th>
+																<th id="form:j_idt48:j_idt50" role="columnheader"
+																aria-label="Id" scope="col"><span
+																class="ui-column-title">phoneNumber</span></th>
+																<th id="form:j_idt48:j_idt50" role="columnheader"
+																aria-label="Id" scope="col"><span
+																class="ui-column-title">pointmerci</span></th>
+																<th id="form:j_idt48:j_idt50" role="columnheader"
+																aria-label="Id" scope="col"><span
+																class="ui-column-title">password</span></th>
 															<th id="form:j_idt48:j_idt50" role="columnheader"
 																aria-label="Id" scope="col"><span
 																class="ui-column-title">Actions</span></th>
@@ -70,7 +85,12 @@
 															<tr>
 																<td role="gridcell">#{item.idClient}</td>
 																<td role="gridcell">#{item.name}</td>
+																<td role="gridcell">#{item.lastName}</td>
 																<td role="gridcell">#{item.birthDate}</td>
+																<td role="gridcell">#{item.email}</td>
+																<td role="gridcell">#{item.phoneNumber}</td>
+																<td role="gridcell">#{item.pointmerci}</td>
+																<td role="gridcell">#{item.password}</td>
 																<td><h:form>
 																		<h:commandButton
 																			action="#{ClientBean.DisplayClient(item)}"

@@ -134,4 +134,12 @@ public class Client implements Serializable {
 		this.pointmerci = pointmerci;
 	}
 
+
+	@Override
+	public String toString() {
+		return "Client [birthDate=" + birthDate + ", clientType=" + clientType + ", email=" + email + ", lastName="
+				+ lastName + ", name=" + name + ", pointmerci=" + pointmerci + "]";
+	}
+	
+
 }

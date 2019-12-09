@@ -36,11 +36,7 @@ public class ServiceImplClient implements ServiceClient{
 	@Override
 
 	public void modifierClient(Client client) {
-	
 	em.merge(client);
-		
-		
-		
 	}
 
 	@Override

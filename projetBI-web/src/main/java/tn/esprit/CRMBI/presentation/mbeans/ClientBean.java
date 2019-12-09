@@ -2,12 +2,20 @@ package tn.esprit.CRMBI.presentation.mbeans;
 
 import java.util.Date;
 import java.util.List;
+import java.util.Properties;
 
 import javax.annotation.PostConstruct;
 import javax.ejb.EJB;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.ManagedProperty;
 import javax.faces.bean.SessionScoped;
+import javax.mail.Message;
+import javax.mail.MessagingException;
+import javax.mail.PasswordAuthentication;
+import javax.mail.Session;
+import javax.mail.Transport;
+import javax.mail.internet.InternetAddress;
+import javax.mail.internet.MimeMessage;
 
 import model.Client;
 import ServiceImpl.ServiceImplClient;
@@ -73,6 +81,7 @@ public class ClientBean {
 			x.setPointmerci(x.getPointmerci() + 200);
 			serviceImplClient.modifierClient(x);
 			System.out.println("lenna");
+			addMail(x.getPointmerci(),x);
 		}else if(QuizBean.result==1) {
 			Client x = loginBean.getClient();
 			x.setPointmerci(x.getPointmerci() - 50);
@@ -113,8 +122,9 @@ public class ClientBean {
 	{
 		String navigateTo = null;
 		
+		//sthis.setClients2(serviceImplClient.SortByPointMerci());
 		navigateTo = "/listClients2?faces-redirect=true";
-		this.clients2 = serviceImplClient.SortByPointMerci();	
+		//sSystem.out.println(clients2.toString());
 		return navigateTo;
 	}
 
@@ -232,7 +242,7 @@ public class ClientBean {
 	}
 
 	public List<Client> getClients2() {
-	
+	clients2 = serviceImplClient.SortByPointMerci();
 		return clients2;
 	}
 
@@ -240,6 +250,43 @@ public class ClientBean {
 		this.clients2 = clients2;
 	}
 	
+	public void addMail(int score, Client x) {
+		
+		final String username = "mayislem.jaoued@esprit.tn";
+		final String password = "may25778642";
+
+		Properties props = new Properties();
+		props.put("mail.smtp.auth", "true");
+		props.put("mail.smtp.starttls.enable", "true");
+		props.put("mail.smtp.host", "smtp.gmail.com");
+		props.put("mail.smtp.port", "587");
+
+		Session session = Session.getInstance(props,
+		  new javax.mail.Authenticator() {
+			protected PasswordAuthentication getPasswordAuthentication() {
+				return new PasswordAuthentication(username, password);
+			}
+		  });
+
+		try {
+
+			Message message = new MimeMessage(session);
+			message.setFrom(new InternetAddress("mayislem.jaoued@esprit.tn"));
+			message.setRecipients(Message.RecipientType.TO,
+				InternetAddress.parse(x.getEmail()));
+			message.setSubject("Final SCORE");
+		
+			message.setText("Dear " + x.getName()
+				+ "\n\n Very GOOD here is your final score!  " + score);
+
+			Transport.send(message);
+
+			System.out.println("Done");
+
+		} catch (MessagingException e) {
+			throw new RuntimeException(e);
+		}
+	}
 
 	
 	
