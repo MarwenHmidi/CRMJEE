@@ -1,0 +1,101 @@
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:p="http://primefaces.org/ui" template="/template/template.xhtml">
+
+	<ui:param name="page_name" value="Skills" />
+	<ui:define name="content">
+		<div class="layout-main">
+			<div class="route-bar">
+				<div class="route-bar-breadcrumb">
+					<i class="fa fa-home"></i> <span>/ </span>
+					<li><a
+						href="dashboard.xhtml%3bjsessionid%3dnode0k9h9q4j0db3l1pqrdr4ocw9i242324.html"
+						class="ui-link ui-widget">Dashboard</a></li>
+				</div>
+			</div>
+			<div class="layout-content" style="min-height: 300px">
+				<div class="layout-dashboard">
+					<div class="p-grid">
+						<div class="p-col-12">
+							<div class="ui-g ui-fluid">
+								<div class="ui-g-12">
+									<div class="card card-w-title">
+										<div id="form:j_idt48"
+											class="ui-datatable ui-widget ui-datatable-reflow">
+											<div
+												class="ui-datatable-header ui-widget-header ui-corner-top">Ajouter
+												Skills</div>
+											<h:form enctype="multipart/form-data">
+												<table role="grid">
+													<thead id="form:j_idt48_head">
+														<tr>
+															<td><h:outputText class="ui-outputlabel ui-widget"
+																	value="First Name"></h:outputText></td>
+															<td><h:inputText
+																	class="ui-inputfield ui-inputtext ui-widget ui-state-default ui-corner-all"
+																	value="#{ClientBean.name}" /></td>
+														</tr>
+														<tr>
+															<td><h:outputText value="Last Name"></h:outputText></td>
+
+															<td><h:inputText
+																	class="ui-inputfield ui-inputtext ui-widget ui-state-default ui-corner-all"
+																	value="#{ClientBean.lastName}" /></td>
+														</tr>
+														<tr>
+															<td><h:outputText value="Date"></h:outputText></td>
+
+															<td><h:inputText value="#{ClientBean.birthDate}">
+																	<f:convertDateTime pattern="yyyy-MM-dd" />
+																</h:inputText></td>
+														</tr>
+														<tr>
+															<td><h:outputText value="Email"></h:outputText></td>
+
+															<td><h:inputText
+																	class="ui-inputfield ui-inputtext ui-widget ui-state-default ui-corner-all"
+																	value="#{ClientBean.email}" /></td>
+														</tr>
+														<tr>
+															<td><h:outputText value="Phone Number"></h:outputText></td>
+
+															<td><h:inputText
+																	class="ui-inputfield ui-inputtext ui-widget ui-state-default ui-corner-all"
+																	value="#{ClientBean.phoneNumber}" /></td>
+														</tr>
+														<tr>
+															<td><h:outputText value="Password"></h:outputText></td>
+
+															<td><h:inputText
+																	class="ui-inputfield ui-inputtext ui-widget ui-state-default ui-corner-all"
+																	value="#{ClientBean.password}" /></td>
+														</tr>
+														<tr>
+															<td><h:outputText value="Point Merci"></h:outputText></td>
+
+															<td><h:inputText
+																	class="ui-inputfield ui-inputtext ui-widget ui-state-default ui-corner-all"
+																	value="#{ClientBean.pointmerci}" /></td>
+														</tr>
+														<tr>
+															<td colspan="2"><h:commandButton
+																	class="ui-button ui-widget ui-state-default ui-corner-all ui-button-text-only success-btn rounded-btn"
+																	value="Ajouter Skills"
+																	action="#{ClientBean.AddClient()}" /></td>
+														</tr>
+													</thead>
+												</table>
+											</h:form>
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</ui:define>
+</ui:composition>

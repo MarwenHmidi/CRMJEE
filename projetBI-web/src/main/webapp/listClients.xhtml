@@ -1,0 +1,121 @@
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:p="http://primefaces.org/ui"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	template="/template/template.xhtml">
+
+	<ui:param name="page_name" value="Skills" />
+	<ui:define name="content">
+		<div class="layout-main">
+			<div class="route-bar">
+				<div class="route-bar-breadcrumb">
+					<i class="fa fa-home"></i> <span>/ </span>
+					<li><a
+						href="dashboard.xhtml%3bjsessionid%3dnode0k9h9q4j0db3l1pqrdr4ocw9i242324.html"
+						class="ui-link ui-widget">Dashboard</a></li>
+				</div>
+			</div>
+			<div class="layout-content" style="min-height: 300px">
+				<div class="layout-dashboard">
+					<div class="p-grid">
+						<div class="p-col-12">
+							<div class="ui-g ui-fluid">
+								<div class="ui-g-12">
+									<div class="card card-w-title">
+										<div class="p-col-3-left">
+											<div class="ui-g ui-fluid">
+												<div class="ui-g-3-left">
+													<div class="card card-w-title">
+														<h:form>
+															<p:outputLabel for="basic" value="Sort By:" />
+															<p:splitButton id="basic" value="Save"
+																action="#{buttonView.save}" icon="pi pi-save">
+																<p:menuitem value="Sort By Point Merci"
+																	action="#{ClientBean.ListSortByPoint()}"
+																	icon="pi pi-refresh" />
+																<p:separator />
+															</p:splitButton>
+														</h:form>
+													</div>
+												</div>
+											</div>
+										</div>
+										<div id="form:j_idt48"
+											class="ui-datatable ui-widget ui-datatable-reflow">
+											<div
+												class="ui-datatable-header ui-widget-header ui-corner-top">List
+												of the new Clients</div>
+											<div>
+												<table role="grid">
+													<thead id="form:j_idt48_head">
+														<tr role="row">
+															<th id="form:j_idt48:j_idt50" role="columnheader"
+																aria-label="Id" scope="col"><span
+																class="ui-column-title">Id</span></th>
+															<th id="form:j_idt48:j_idt50" role="columnheader"
+																aria-label="Id" scope="col"><span
+																class="ui-column-title">nom</span></th>
+																<th id="form:j_idt48:j_idt50" role="columnheader"
+																aria-label="Id" scope="col"><span
+																class="ui-column-title">lastName</span></th>
+															<th id="form:j_idt48:j_idt50" role="columnheader"
+																aria-label="Id" scope="col"><span
+																class="ui-column-title">birthDate</span></th>
+																<th id="form:j_idt48:j_idt50" role="columnheader"
+																aria-label="Id" scope="col"><span
+																class="ui-column-title">email</span></th>
+																<th id="form:j_idt48:j_idt50" role="columnheader"
+																aria-label="Id" scope="col"><span
+																class="ui-column-title">phoneNumber</span></th>
+																<th id="form:j_idt48:j_idt50" role="columnheader"
+																aria-label="Id" scope="col"><span
+																class="ui-column-title">pointmerci</span></th>
+																<th id="form:j_idt48:j_idt50" role="columnheader"
+																aria-label="Id" scope="col"><span
+																class="ui-column-title">password</span></th>
+															<th id="form:j_idt48:j_idt50" role="columnheader"
+																aria-label="Id" scope="col"><span
+																class="ui-column-title">Actions</span></th>
+
+														</tr>
+													</thead>
+													<tbody>
+														<ui:repeat value="#{ClientBean.clients}" var="item">
+															<tr>
+																<td role="gridcell">#{item.idClient}</td>
+																<td role="gridcell">#{item.name}</td>
+																<td role="gridcell">#{item.lastName}</td>
+																<td role="gridcell">#{item.birthDate}</td>
+																<td role="gridcell">#{item.email}</td>
+																<td role="gridcell">#{item.phoneNumber}</td>
+																<td role="gridcell">#{item.pointmerci}</td>
+																<td role="gridcell">#{item.password}</td>
+																<td><h:form>
+																		<h:commandButton
+																			action="#{ClientBean.DisplayClient(item)}"
+																			class="ui-button ui-widget ui-state-default ui-corner-all ui-button-text-only help-btn rounded-btn ui-state-hover"
+																			value="Update" />
+
+																	|| <h:commandButton
+																			action="#{ClientBean.removeClient(item.idClient)}"
+																			class="ui-button ui-widget ui-state-default ui-corner-all ui-button-text-only danger-btn rounded-btn"
+																			value="Delete" />
+																	</h:form></td>
+
+															</tr>
+														</ui:repeat>
+													</tbody>
+												</table>
+											</div>
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</ui:define>
+</ui:composition>

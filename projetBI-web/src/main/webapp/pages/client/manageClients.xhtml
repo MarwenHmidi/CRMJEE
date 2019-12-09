@@ -1,0 +1,59 @@
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	template="/template/template.xhtml">
+	<ui:define name="content">
+		<div class="client">
+			<h:form>
+				<h1>Gestion des clients</h1>
+				<tr>
+						<td><h:outputText value="ClientName"></h:outputText></td>
+						<td><h:inputText value="#{clientBean.name}"></h:inputText></td>
+					</tr>
+				 
+				
+					<tr>
+						<td colspan="2"><h:commandLink value="Ajouter Client"
+								action="#{clientBean.AddClient()}" /></td>
+					</tr>
+					<tr>
+					<h:commandButton action="#{clientBean.updateClient()}" value="Update Client" />
+					</tr>
+
+
+			</h:form>
+			<div class="client">
+			<h:form>
+			
+				<h:dataTable value="#clientBean.Clients}" var="Client" border="1">
+					<h:column>
+						<f:facet name="header">
+							<h:outputText value="clientName" />
+						</f:facet>
+						<h:outputText value="#{Client.name}" />
+					</h:column>
+					<h:column>
+						<f:facet name="header">
+							<h:outputText value="lastName" />
+						</f:facet>
+						<h:outputText value="#{Client.lastName}" />
+					</h:column>
+					
+					<h:column>
+						<f:facet name="header">
+							<h:outputText value="Action" />
+						</f:facet>
+						<h:commandButton action="#{ClientBean.removeClient(Client.id)}"
+							value="Supprimer" />
+							<h:commandButton action="#{ClientBean.updateClient(Client)}" value="Modifier" />
+							
+					</h:column>
+				</h:dataTable>
+			</h:form>
+		</div>
+
+		</div>
+
+	</ui:define>
+</ui:composition>

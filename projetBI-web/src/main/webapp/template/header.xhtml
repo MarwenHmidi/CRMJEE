@@ -1,0 +1,114 @@
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:p="http://primefaces.org/ui"
+	xmlns:ui="http://java.sun.com/jsf/facelets">
+
+
+	<div class="layout-topbar">
+		<a
+			href="dashboard.xhtml%3bjsessionid%3dnode0k9h9q4j0db3l1pqrdr4ocw9i242324.html"
+			class="layout-topbar-logo"><img id="j_idt15"
+			src="javax.faces.resource/images/logo-white.png.xhtml%3bjsessionid%3dnode0k9h9q4j0db3l1pqrdr4ocw9i242324c7f4.png?ln=babylon-layout"
+			alt="" /></a> <a class="layout-menu-button" href="#"> <i
+			class="fa fa-bars"></i>
+		</a> <a id="topbar-menu-button" href="#"> <i class="fa fa-ellipsis-v"></i>
+		</a>
+
+		<ul class="topbar-menu fadeInDown">
+			<li class="user-profile"><a href="#"><img id="j_idt19"
+					src="javax.faces.resource/images/avatar.png.xhtml%3bjsessionid%3dnode0k9h9q4j0db3l1pqrdr4ocw9i242324c7f4.png?ln=babylon-layout"
+					alt="" /> <span class="topbar-item-name">Arlene Welch</span> </a>
+				<ul>
+					<li><a href="#"> <i class="fa fa-fw fa-user"></i> <span>Profile</span>
+					</a></li>
+					<li><a href="#"> <i class="fa fa-fw fa-envelope-o"></i> <span>Messages</span>
+					</a></li>
+					<li><a href="#"> <i class="fa fa-fw fa-bell-o"></i> <span>Notifications</span>
+					</a></li>
+					<li><h:form>
+							<h:commandButton
+								action="#{EmployeCompetenceBean.listByEmploye(1)}"
+								value="Mes Competences" icon="fa fa-fw fa-cog" />
+						</h:form></li>
+				</ul></li>
+		</ul>
+	</div>
+
+	<div class="layout-menu-container">
+		<div class="layout-menu-logo">
+			<a
+				href="dashboard.xhtml%3bjsessionid%3dnode0k9h9q4j0db3l1pqrdr4ocw9i242324.html"><img
+				id="j_idt34"
+				src="javax.faces.resource/images/logo-white.png.xhtml%3bjsessionid%3dnode0k9h9q4j0db3l1pqrdr4ocw9i242324c7f4.png?ln=babylon-layout"
+				alt="" /></a>
+		</div>
+
+		<div class="nano layout-menu-wrapper">
+			<div class="nano-content menu-scroll-content">
+				<form id="menuform" name="menuform" method="post"
+					action="https://www.primefaces.org/babylon/dashboard.xhtml;jsessionid=node0k9h9q4j0db3l1pqrdr4ocw9i242324.node0"
+					enctype="application/x-www-form-urlencoded">
+					<input type="hidden" name="menuform" value="menuform" />
+					<ul id="menuform:j_idt40" class="layout-menu">
+						<li id="menuform:om_customization" role="menuitem"
+							class="layout-root-menuitem"><div>
+								<span class="layout-menuitem-text">Customization</span>
+							</div> <a href="#"><i
+								class="fa fa-fw fa-magic fa-fw layout-menuitem-icon"></i><span
+								class="layout-menuitem-text">Customization</span><i
+								class="fa fa-fw layout-submenu-toggler fa-angle-down"></i></a>
+							<div class="layout-menu-tooltip">
+								<div class="layout-menu-tooltip-arrow"></div>
+								<div class="layout-menu-tooltip-text">Customization</div>
+							</div>
+							<ul role="menu">
+								<li id="menuform:om_menulayouts" role="menuitem"><a
+									href="#"><i
+										class="fa fa-fw fa-desktop fa-fw layout-menuitem-icon"></i><span
+										class="layout-menuitem-text">Clients :</span><i
+										class="fa fa-fw layout-submenu-toggler fa-angle-down"></i><span
+										class="menuitem-badge">5</span></a>
+									<div class="layout-menu-tooltip">
+										<div class="layout-menu-tooltip-arrow"></div>
+										<div class="layout-menu-tooltip-text">Competence :</div>
+									</div>
+									<ul role="menu">
+										<li id="menuform:om_menulayouts_1" role="menuitem"><h:link
+												outcome="/addclient">
+												<i class="fa fa-fw fa-columns fa-fw layout-menuitem-icon"></i>
+												<span class="layout-menuitem-text">Ajouter Clients</span>
+											</h:link>
+											<div class="layout-menu-tooltip">
+												<div class="layout-menu-tooltip-arrow"></div>
+												<div class="layout-menu-tooltip-text">Ajouter Clients</div>
+											</div></li>
+										<li id="menuform:om_menulayouts_2" role="menuitem"><h:link
+												outcome="/listClients">
+												<i class="fa fa-fw fa-columns fa-fw layout-menuitem-icon"></i>
+												<span class="layout-menuitem-text">List of Clients</span>
+											</h:link>
+											<div class="layout-menu-tooltip">
+												<div class="layout-menu-tooltip-arrow"></div>
+												<div class="layout-menu-tooltip-text">List of Clients</div>
+											</div></li>
+									</ul></li>
+							</ul></li>
+					</ul>
+					<script id="menuform:j_idt40_s" type="text/javascript">
+						$(function() {
+							PrimeFaces.cw("Babylon", "widget_menuform_j_idt40",
+									{
+										id : "menuform:j_idt40",
+										statefulScroll : true
+									});
+						});
+					</script>
+					<input type="hidden" name="javax.faces.ViewState"
+						id="j_id1:javax.faces.ViewState:0"
+						value="6111909919562598689:5855945310390773730" autocomplete="off" />
+				</form>
+			</div>
+		</div>
+	</div>
+</ui:composition>

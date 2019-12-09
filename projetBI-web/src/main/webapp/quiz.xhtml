@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" 
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core">
+<h:body>
+
+	<h1>JSF 2 dropdown box example</h1>
+	<h:form>
+    	
+	    1. What's the main goal for ooredoo in order to improve the quality of its services ? : 
+   		<h:selectOneMenu value="#{quizBean.favCoffee1}">
+			<f:selectItem itemValue="Reponse 1" itemLabel="Practice" />
+			<f:selectItem itemValue="Reponse 2" itemLabel="Interaction" />
+			<f:selectItem itemValue="Reponse 3" itemLabel="Motivation" />
+		</h:selectOneMenu>
+
+		<br />
+		<br />
+	    
+	    2. Are the users of ooredoo always complain about network problems ? :
+   		<h:selectOneMenu value="#{quizBean.favCoffee2}">
+			<f:selectItems value="#{quizBean.favCoffee2Value}" />
+		</h:selectOneMenu>
+
+		<br />
+		<br />
+	    
+	    3. Is ooredoo an international operator ?  :
+   		<h:selectOneMenu value="#{quizBean.favCoffee3}">
+			<f:selectItems value="#{quizBean.favCoffee3Value}" var="c"
+				itemLabel="#{c.coffeeLabel}" itemValue="#{c.coffeeValue}" />
+		</h:selectOneMenu>
+
+		<br />
+		<br />
+
+		<h:commandButton value="Submit" action="result"
+			actionListener="#{quizBean.takeTest()}">
+			<f:actionListener binding="#{ClientBean.updatepointMerci()}" />
+		</h:commandButton>
+		<h:commandButton value="Reset" type="reset" />
+
+	</h:form>
+</h:body>
+</html>

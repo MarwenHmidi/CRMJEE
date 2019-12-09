@@ -1,0 +1,28 @@
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:p="http://primefaces.org/ui" template="/template/template.xhtml">
+
+	<table>
+		<ui:repeat var="car" value="#{clientQuizBean.question}" varStatus="myVarStatus">
+
+			<ui:fragment
+				rendered="#{myVarStatus.index == 0 || !bean.cars.get(myVarStatus.index).brand.equals(bean.cars.get(myVarStatus.index -1).brand}">
+				<tr>
+					<td colspan="3"><h:outputText value="#{car.brand}"></td>
+				</tr>
+			</ui:fragment>
+
+			<tr>
+				<td>#{car.type}</td>
+				<td>#{car.color}</td>
+				<td>#{car.year}</td>
+			</tr>
+
+		</ui:repeat>
+	</table>
+
+</ui:composition>
+
+
