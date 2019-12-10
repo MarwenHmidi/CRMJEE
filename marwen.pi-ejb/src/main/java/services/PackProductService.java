@@ -42,7 +42,7 @@ public class PackProductService implements PackProductServiceRemote, PackProduct
 	
 		for (String nb : prods) {
 			
-		//SmsSender(" New Pack "+String.valueOf(PackName(packid))+"Product"+String.valueOf(ProductName(Integer.parseInt(nb))));
+		SmsSender(" New Pack "+String.valueOf(PackName(packid))+"Product"+String.valueOf(ProductName(Integer.parseInt(nb))));
 
 
 			ProductPackPK packPK = new ProductPackPK();
