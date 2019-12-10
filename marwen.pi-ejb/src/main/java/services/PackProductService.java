@@ -61,14 +61,7 @@ public class PackProductService implements PackProductServiceRemote, PackProduct
 	
 	@Override
 	public void ajoutProductPack() {
-		// TODO Auto-generated method stub
-		/*List<Products> products = new ArrayList<Products>();
-		Products prod= em.find(Products.class, prodid);
-		Packs pack = em.find(Packs.class, packid);
-		pack.setPackId(packid);
-		products.add(prod);
-		packs.
-		em.persist(packs);*/	
+		
 		ProductPackPK packPK = new ProductPackPK();
 		packPK.setPackId(1);
 		packPK.setProductId(1);
@@ -187,6 +180,12 @@ public Object ProductName(int id) {
 
 	    return results;
 	}
+
+
+public Object count() {
+	
+    return em.createQuery("SELECT count(a) FROM Products a", Products.class).getResultList();      
+}
 
 
 

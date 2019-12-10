@@ -23,4 +23,5 @@ public interface PackProductServiceRemote {
 		public Object PackName(int id);
 		public Object ProductName(int id);
 		public void  DeleteProductFromPack(int idProd, int idPack);
+		public Object count();
 }
