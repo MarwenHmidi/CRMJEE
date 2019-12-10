@@ -62,30 +62,6 @@ public class PacksBean implements Serializable{
 	private String imgUrls="1111.png";
 
 
-//	  private HtmlPanelGrid myform;
-
-  
-    
-    
-    
-	
-
-
-//
-//	public HtmlPanelGrid getMyform() {
-//		return myform;
-//	}
-//
-//
-//	public void setMyform(HtmlPanelGrid myform) {
-////		  myform.getChildren().clear();
-////		 GraphicImage i = new GraphicImage();
-//// 		  i.setLibrary("uploads");
-//// 	         i.setName(imgUrls);
-////// 	         myform.getChildren().clear();
-////       	myform.getChildren().add(i);
-//		this.myform = myform;
-//	}
 	 
 
 	public String getImgUrls() {
@@ -234,12 +210,10 @@ public void setPacks(List<Packs> packs) {
 
             pp="PackName : "+packname+"Quantity : "+quantity+"StartDate : "+startdate.toString()+"EndDate :"+enddate.toString();
   	}
-	//String  pp=(String)packService.findPackbyname(pn);
 
 
    	 
 	
-//		  JSONArray jsonArray = new JSONArray(packService.findPackbyname(pn));
 		
 	return pp;
 	}

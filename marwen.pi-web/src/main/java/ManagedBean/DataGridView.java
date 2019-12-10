@@ -59,9 +59,7 @@ public class DataGridView implements Serializable {
        SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
 
         for (Packs p : service.findAllPacks()) {
-//        	System.out.println(sdf.format(p.getEndDate()));
-//        			System.out.println(sdf.format(current));
-//        	System.out.println(sdf.format(p.getEndDate()).compareTo(sdf.format(current)));
+
 
             if(p.getEndDate().compareTo(current)<0)
             {
@@ -71,7 +69,6 @@ public class DataGridView implements Serializable {
             	lf.add(p);
             }
         }
-//        cars = service.findAllPacks();
   cars = lf;
 
     	
