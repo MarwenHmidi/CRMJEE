@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+xmlns:f="http://java.sun.com/jsf/core" 
+xmlns:h="http://java.sun.com/jsf/html"
+xmlns:p="http://primefaces.org/ui"
+xmlns:ui="http://java.sun.com/jsf/facelets">
+
+
+  <ui:composition template="/Template/Template.xhtml">
+       <ui:define name="content">
+
+      
+    <h:head>
+    	<h:outputStylesheet library="css" name="table-style.css"  />
+    </h:head>
+    <h:body>
+ 
+      
+        <p:dataTable id="basicDT" var="packss" value="#{packProduct.packService.findaAllPackProductsDid()}" widgetVar="pack1" filteredValue="#{packSB.filteredCars2}" rows="3"
+                 paginator="true"
+                 paginatorTemplate="{CurrentPageReport} {FirstPageLink} {PreviousPageLink} {PageLinks} {NextPageLink} {LastPageLink} {RowsPerPageDropdown}"
+                 rowsPerPageTemplate="3,6,9">
+
+ <p:column >
+ 
+ 
+ 
+ 
+ <p:panelGrid columns="2">
+    <f:facet name="header">
+            <p:graphicImage library="uploads"  name="#{packss.imgUrl}"  height="200" width="200"/>
+    </f:facet>
+         <span>packName  :	</span><h:outputText value="#{packss.packName}" />
+              
+            <span>Description  :</span><h:outputText value="#{packss.description}" />
+            <span>Quantity :	</span><h:outputText value="#{packss.quantity}" />
+            <span>StartDate :	</span><h:outputText value="#{packss.startDate}" />
+           <span>EndDate :	</span> <h:outputText value="#{packss.endDate}" /> 
+           <h:form>
+               <h:commandButton  action="#{packProduct.redirectPack(packss)}" value="Details" styleClass="btn btn-info">
+           </h:commandButton>
+           </h:form>
+</p:panelGrid>
+
+
+ </p:column>
+ 
+ 
+ 
+ 
+
+ <p:column>
+<f:facet name="header">
+ <h:outputText value="Pack Product"/> 
+ </f:facet>
+  <p:dataTable  value="#{packProduct.packService.findPackProductbyid(packss.packId)}" var="packs" rows="2"
+                 paginator="true"
+                 paginatorTemplate="{CurrentPageReport} {FirstPageLink} {PreviousPageLink} {PageLinks} {NextPageLink} {LastPageLink} {RowsPerPageDropdown}"
+                 rowsPerPageTemplate="2,4,6">
+  <p:column>
+<f:facet name="header">
+
+
+
+ <h:outputText value="Product Image"/> 
+ </f:facet>
+ <center>
+    
+             <p:graphicImage library="uploads"   name="#{packProduct.packService.findProductbyid(packs.id.productId).get(0).imageUrl}"  height="80" width="80"/>
+ 
+ </center>
+</p:column> 
+<p:column>
+            <h:form>
+
+<f:facet name="header">
+ <h:outputText value="Product infos"/> 
+ </f:facet>
+
+
+    
+       <p:column headerText="information">
+             <span>Product Name  :	</span><h:outputText value="#{packProduct.packService.findProductbyid(packs.id.productId).get(0).title}" />
+              
+              <p:separator />
+            <span>Product Price :	</span><h:outputText value="#{packProduct.packService.findProductbyid(packs.id.productId).get(0).price}" />
+                            <p:separator />
+              
+                          <span>Add Date :	</span><h:outputText value="#{packs.startDate}" />
+                           <p:commandButton  value="Delete" action="#{packProduct.DeleteProductfromPack(packs.id.productId,packs.id.packId)}"     styleClass="btn btn-info" ></p:commandButton>
+             
+        </p:column>
+    
+            </h:form>
+
+
+</p:column> 
+ 
+  </p:dataTable>
+</p:column> 
+
+ 
+
+</p:dataTable>
+      <p:stack icon="/resources/images/stack.png" expanded="true">
+  <p:menuitem value="Home"  icon="/resources/images/home.png" url="Home.xhtml"/>
+ <p:menuitem value="PP-Add"  icon="/resources/images/packk.png" url="PackProductAdd.xhtml"/>
+ <p:menuitem value="PP-Show" icon="/resources/images/pack.png" url="PackShowdetailed.xhtml"/>
+    <p:menuitem value="Reporting"  icon="/resources/images/report-icon.png" url="Reporting.xhtml"/>
+</p:stack>    
+      
+      
+       <!-- DatePicker JavaScript & CSS -->
+    <script type="text/javascript" src="https://code.jquery.com/ui/1.12.1/jquery-ui.js" />
+    <link rel="stylesheet" href="https://code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css" />
+      
+      
+    </h:body>	
+    </ui:define>
+    </ui:composition>
+</html>

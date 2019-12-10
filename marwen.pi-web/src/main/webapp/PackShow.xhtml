@@ -1,0 +1,212 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+xmlns:f="http://java.sun.com/jsf/core" 
+xmlns:h="http://java.sun.com/jsf/html"
+xmlns:p="http://primefaces.org/ui"
+xmlns:ui="http://java.sun.com/jsf/facelets">
+
+
+  <ui:composition template="/Template/Template.xhtml">
+       <ui:define name="content">
+<h:head>
+    <!-- Required meta tags-->
+    <meta charset="UTF-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no"/>
+    <meta name="description" content="au theme template"/>
+    <meta name="author" content="Hau Nguyen"/>
+    <meta name="keywords" content="au theme template"/>
+
+   <style type="text/css"> 
+    /*demo*/
+    .ui-dataview-list .ui-dataview-row {
+        border-bottom: 1px solid #A8A8A8;
+        padding: 25px 10px;
+        /* with the exported variables from Nova and Luna Themes*/
+        border-bottom-color: var(--input-border-color, #A8A8A8);
+    }
+ 
+    .logo {
+        width: 5%;
+    }
+    .detail {
+        width: 85%;
+        padding-left: 25px;
+    }
+</style>
+    <title>Pack Show</title>
+</h:head>
+
+<body class="animsition" >
+
+
+<h:panelGrid columns="1" cellpadding="5" >
+    <p:commandButton value="Search Result" type="button" onclick="PF('dlg3').show();" /> 
+</h:panelGrid>
+
+ 
+<p:dialog header="Effects" widgetVar="dlg3" showEffect="explode" hideEffect="bounce" height="100" >
+   
+<p:graphicImage   library="uploads"  name="#{packsBean.imgUrls}" width="100" height="100"/>
+
+           <h:outputText id="out" value="#{packsBean.pn}" />
+   
+   
+</p:dialog>
+
+
+<h:form id="form">
+
+
+
+  <h:panelGrid columns="3">
+        <h:outputText value="Keyup: " />
+        <p:inputText id="counter"  value="#{packsBean.pn}" autocomplete="off" > 
+            <p:ajax event="keyup"  update="out" listener="#{packsBean.Json()}"   />            
+        </p:inputText>
+    </h:panelGrid>
+   
+
+
+
+
+    <p:dataView id="dtv" var="car" value="#{dataGridView.cars}" rows="12" paginator="true" rowsPerPageTemplate="6,12,16"
+                paginatorTemplate="{CurrentPageReport} {FirstPageLink} {PreviousPageLink} {PageLinks} {NextPageLink} {LastPageLink} {RowsPerPageDropdown}"
+                gridIcon="fa fa-fw fa-th-large" listIcon="fa fa-fw fa-bars"  >
+ 
+        <p:dataViewGridItem>
+            <p:panel header="#{car.packId}" style="text-align:center" >
+                <h:panelGrid columns="1" style="width:100%">
+                
+<p:graphicImage   library="uploads"  name="#{car.imgUrl}" width="100" height="100"/>
+
+
+
+                   <h:outputText value="#{car.packName}" />
+ 
+                    <p:commandLink update=":form:carDetail" oncomplete="PF('carDialog').show()" title="View Detail">
+                    
+                 
+                        <h:outputText styleClass="fa fa-fw fa-search" style="margin:0 auto;" />
+                        <f:setPropertyActionListener value="#{car}" target="#{dataGridView.selectedCar}" />
+                    </p:commandLink>
+                        <p:menuButton value="Options">
+                     
+                <p:menuitem value="Update" action="#{packsBean.modifier(car)}"  styleClass="btn btn-primary" />
+                <p:menuitem value="Delete" action="#{packsBean.supprimer(car.packId)}" ajax="false" styleClass="btn btn-danger" />
+            </p:menuButton>
+                </h:panelGrid>
+            </p:panel>
+        </p:dataViewGridItem>
+ 
+        <p:dataViewListItem>
+            <h:panelGrid columns="3" style="width:100%" columnClasses="logo,detail">
+<p:graphicImage   library="uploads"  name="#{car.imgUrl}" width="100" height="100"/>
+ 
+                <p:outputPanel>
+                    <h:panelGrid columns="2" cellpadding="5">
+                        <h:outputText value="Id:" />
+                        <h:outputText value="#{car.packId}" style="font-weight: bold"/>
+ 
+                        <h:outputText value="packName:" />
+                        <h:outputText value="#{car.packName}" style="font-weight: bold"/>
+                        
+                        <h:outputText value="startDate:" />
+                        <h:outputText value="#{car.startDate}" style="font-weight: bold"/>
+ 
+     				    <h:outputText value="EndDate: " />
+                        <h:outputText value="#{car.endDate}" style="font-weight: bold"/>
+                        <h:outputText value="typePack:" />
+                        <h:outputText value="#{car.typePack}" style="font-weight: bold"/>
+                        
+                        <h:outputText value="packName:" />
+                        <h:outputText value="#{car.packName}" style="font-weight: bold"/>
+                        
+                        
+                              <h:commandButton action="#{packsBean.modifier(car)}" value="update"  styleClass="btn btn-primary"/> 
+                      <h:commandButton action="#{packsBean.supprimer(car.packId)}" value="Delete" styleClass="btn btn-danger" /> 
+                        <a onclick="actualizaMenu('#{car.endDate}','#{car.packId}')"> 
+                        
+                        <i class="fa fa-fw fa-clock fa-5x" ></i>
+                        </a>        <div id="#{car.packId}" ></div>  
+                        <br />
+                  
+                    
+                    </h:panelGrid>
+                </p:outputPanel>
+ 
+                <p:commandLink update=":form:carDetail" oncomplete="PF('carDialog').show()" title="View Detail">
+                    <h:outputText styleClass="ui-icon pi pi-search" style="margin:0 auto;" />
+                    <f:setPropertyActionListener value="#{car}" target="#{dataGridView.selectedCar}" />
+                </p:commandLink>
+            </h:panelGrid>
+        </p:dataViewListItem>
+    </p:dataView>
+ 
+    <p:dialog header="Pack Info" widgetVar="carDialog" modal="true" showEffect="fade" hideEffect="fade" resizable="false">
+        <p:outputPanel id="carDetail" style="text-align:center;" >
+            <p:panelGrid  columns="2" rendered="#{not empty dataGridView.selectedCar}" columnClasses="label,value">
+                <f:facet name="header">
+                    <p:graphicImage name="C:/Users/Marwen/4ERP-BI2/marwen.pi/marwen.pi-web/src/main/webapp/resources/uploads/#{dataGridView.selectedCar.imgUrl}"/> 
+                </f:facet>
+ 
+                <h:outputText value="Id:" style="color: red" />
+                <h:outputText value="#{dataGridView.selectedCar.packId}" />
+ 
+                <h:outputText value="PackName" style="color: red" />
+                <h:outputText value="#{dataGridView.selectedCar.packName}" />
+ 
+                <h:outputText value="startDate :" style="color: red" />
+                <h:outputText value="#{dataGridView.selectedCar.startDate}"/>
+ 
+                <h:outputText value="EndDate"  style="color: red" />
+                <h:outputText value="#{dataGridView.selectedCar.endDate}" />
+            </p:panelGrid>
+        </p:outputPanel>
+    </p:dialog>
+    <p:stack icon="/resources/images/stack.png" expanded="true">
+  <p:menuitem value="Home"  icon="/resources/images/home.png" url="Home.xhtml"/>
+ <p:menuitem value="PackAdd"  icon="/resources/images/packk.png" url="PackAdd.xhtml"/>
+ <p:menuitem value="PackShow" icon="/resources/images/pack.png" url="PackShow.xhtml"/>
+    <p:menuitem value="Reporting"  icon="/resources/images/report-icon.png" url="Reporting.xhtml"/>
+</p:stack>
+ 
+</h:form>
+
+                            <script src="/resources/sweet/dist/sweetalert2.all.min.js"></script>
+                            <link rel="stylesheet" href="/resources/sweet/dist/sweetalert2.css"/>
+    <link href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet"/>
+
+       <!-- DatePicker JavaScript & CSS -->
+    <script type="text/javascript" src="https://code.jquery.com/ui/1.12.1/jquery-ui.js" />
+    <link rel="stylesheet" href="https://code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css" />
+
+<script>
+function actualizaMenu(date,id){
+	var x = setInterval(function() {
+		var countDownDate = new Date(date).getTime();
+		  var now = new Date().getTime();
+
+		  var distance = countDownDate - now;
+
+		  var days = Math.floor(distance / (1000 * 60 * 60 * 24));
+		  var hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+		  var minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+		  var seconds = Math.floor((distance % (1000 * 60)) / 1000);
+
+		  document.getElementById(id).innerHTML = days + "d " + hours + "h "
+		  + minutes + "m " + seconds + "s ";
+
+		  // If the count down is finished, write some text
+		  
+	}, 1000);
+}
+</script>
+
+
+    <!-- Main JS-->
+
+</body>
+</ui:define>
+</ui:composition>
+</html>
+<!-- end document-->

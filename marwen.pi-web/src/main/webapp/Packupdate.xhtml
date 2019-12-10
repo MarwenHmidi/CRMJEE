@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+xmlns:f="http://java.sun.com/jsf/core" 
+xmlns:h="http://java.sun.com/jsf/html"
+xmlns:p="http://primefaces.org/ui"
+xmlns:ui="http://java.sun.com/jsf/facelets">
+
+
+  <ui:composition template="/Template/Template.xhtml">
+       <ui:define name="content">
+<h:head>
+    <!-- Required meta tags-->
+    <meta charset="UTF-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no"/>
+    <meta name="description" content="au theme template"/>
+    <meta name="author" content="Hau Nguyen"/>
+    <meta name="keywords" content="au theme template"/>
+
+   
+    <title>Update</title>
+
+
+</h:head>
+
+<body class="animsition">
+<h:form  enctype="multipart/form-data">
+<h:panelGrid columns="2">
+
+<h:outputText value="packName"/>
+ <h:inputText value="#{packsBean.packName}" />
+ 
+ <h:outputText value="startDate" /> 
+	<p:calendar value="#{packsBean.startDate}" mindate="#{packsBean.currentday}" ></p:calendar>
+
+
+			
+<h:outputText value="endDate"/> 
+<p:calendar value="#{packsBean.endDate}" mindate="#{packsBean.currentday}" ></p:calendar>
+<h:outputText value="typePack" /> 
+<h:inputText value="#{packsBean.typePack}"/> 
+<h:outputText value="description" /> 
+<h:inputText value="#{packsBean.description}"/> 
+<h:outputText value="Quantity" /> 
+<h:inputText value="#{packsBean.quantity}"/> 
+
+Single file<br />
+      
+    <p:fileUpload value="#{packsBean.file}" mode="simple" skinSimple="true" />
+    <br />
+<h:panelGrid>
+<h:commandButton action="#{packsBean.update()}" value="Update" /> 
+
+</h:panelGrid>
+
+</h:panelGrid>
+</h:form>
+<f:facet name="">
+<p:dock position="bottom">
+    <p:menuitem value="Home"  icon="/resources/images/home.png" url="PackShow.xhtml"/>
+    <p:menuitem value="Pack" icon="/resources/images/pack.png" url="PackAdd.xhtml"/>
+
+</p:dock>
+</f:facet>
+
+   <p:stack icon="/resources/images/stack.png" expanded="true">
+  <p:menuitem value="Home"  icon="/resources/images/home.png" url="Home.xhtml"/>
+ <p:menuitem value="PackAdd"  icon="/resources/images/packk.png" url="PackAdd.xhtml"/>
+ <p:menuitem value="PackShow" icon="/resources/images/pack.png" url="PackShow.xhtml"/>
+    <p:menuitem value="Reporting"  icon="/resources/images/report-icon.png" url="Reporting.xhtml"/>
+</p:stack>
+
+
+
+</body>
+</ui:define>
+</ui:composition>
+</html>
+<!-- end document-->

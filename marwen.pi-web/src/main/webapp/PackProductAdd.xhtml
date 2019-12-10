@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+xmlns:f="http://java.sun.com/jsf/core" 
+xmlns:h="http://java.sun.com/jsf/html"
+xmlns:p="http://primefaces.org/ui"
+xmlns:ui="http://java.sun.com/jsf/facelets">
+      
+  <ui:composition template="/Template/Template.xhtml">
+       <ui:define name="content">
+ <h:head></h:head> 
+<body> 
+<h:form id="form">
+<h1>Pack Product</h1> 
+<h:panelGrid columns="2">
+<p:selectOneMenu value="#{packProduct.packId}">
+
+ <f:selectItems value="#{packProduct.packs}" var="emp"
+                           itemLabel="#{emp.packName}" itemValue="#{emp.packId}"/>
+</p:selectOneMenu>
+
+
+<h:selectManyListbox value="#{packProduct.productId}">
+ <f:selectItems value="#{packProduct.products}" var="emp"
+                           itemLabel="#{emp.title}" itemValue="#{emp.productId}"/>
+</h:selectManyListbox>
+<h:commandButton action="#{packProduct.addProduct()}" value="Add" styleClass="btn btn-dark" /> 
+
+<h:message for="btn"/> 
+</h:panelGrid> 
+</h:form>
+</body> 
+</ui:define>
+</ui:composition> 
+</html> 
+      

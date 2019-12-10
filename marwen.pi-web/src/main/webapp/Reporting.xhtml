@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+xmlns:f="http://java.sun.com/jsf/core" 
+xmlns:h="http://java.sun.com/jsf/html"
+xmlns:p="http://primefaces.org/ui"
+xmlns:ui="http://java.sun.com/jsf/facelets">
+
+
+  <ui:composition template="/Template/Template.xhtml">
+       <ui:define name="content">
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/1.3.3/jspdf.min.js"></script>
+<script src="https://html2canvas.hertzen.com/dist/html2canvas.js"></script>
+<style type="text/css">
+    .ui-stack {
+        z-index: 1000;
+    }
+</style>
+<h:head>
+    <!-- Required meta tags-->
+    <meta charset="UTF-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no"/>
+    <meta name="description" content="au theme template"/>
+    <meta name="author" content="Hau Nguyen"/>
+    <meta name="keywords" content="au theme template"/>
+
+ <style type="text/css"> 
+    /*demo*/
+    .ui-dataview-list .ui-dataview-row {
+        border-bottom: 1px solid #A8A8A8;
+        padding: 25px 10px;
+        /* with the exported variables from Nova and Luna Themes*/
+        border-bottom-color: var(--input-border-color, #A8A8A8);
+    }
+ 
+    .logo {
+        width: 5%;
+    }
+    .detail {
+        width: 85%;
+        padding-left: 25px;
+    }
+</style>
+    <title>Dashboard</title>
+
+
+  
+
+</h:head>
+
+<body class="animsition" >
+
+<h:form>
+<h:panelGrid  columns="2" columnClasses="left,right" style="width:100%">
+<p:chart  type="pie" model="#{chartView.pieModel1}" style="width:400px;height:300px"  widgetVar="pieWV"/>
+    <p:chart  type="bar" model="#{chartView.animatedModel2}" style="width:400px;"  widgetVar="barWV" />
+</h:panelGrid>
+<br />
+<p:chart type="bar" model="#{chartView.barModel}" style="height:300px;color:blue" widgetVar="barWV2"/>
+
+<p:chart type="line" model="#{chartView.dateModel}" style="height:400px;" widgetVar="lineWV"/>
+
+
+
+
+</h:form>
+
+
+		<p:commandLink onclick="exportChartInPDF()" styleClass="btn btn-primary">
+										<i class="fa fa-file-pdf-o m-r-5" aria-hidden="true"></i>
+										Export Chart To PDF
+									</p:commandLink>
+
+    <script src="../resources/dist/js/pdfmake.min.js"></script>
+        <script src="../resources/dist/js/vfs_fonts.js"></script>
+ <script>
+
+ function exportChartInPDF() {
+		var docDefinition = {
+			content: [
+				'Line Chart',
+				{
+					image: $(PF('lineWV').exportAsImage()).attr('src'),
+					width: 520
+				},
+				'Area Chart',
+				{
+					image: $(PF('barWV2').exportAsImage()).attr('src'),
+					width: 520
+				},
+				'Bar Chart',
+				{
+					image: $(PF('barWV').exportAsImage()).attr('src'),
+					width: 520
+				},
+				'Pie Chart',
+				{
+					image: $(PF('pieWV').exportAsImage()).attr('src'),
+					width: 520
+				},
+			]
+		}
+		pdfMake.createPdf(docDefinition).open();
+		pdfMake.createPdf(docDefinition).download('primefaces-charts.pdf');
+	}
+</script>
+ 
+<p:stack icon="/resources/images/stack.png" expanded="true">
+ <p:menuitem value="Home"  icon="/resources/images/home.png" url="Home.xhtml"/>
+    <p:menuitem value="Pack"  icon="/resources/images/packk.png" url="PackShow.xhtml"/>
+ <p:menuitem value="PProduct" icon="/resources/images/pack.png" url="PackProductShow.xhtml"/>
+    <p:menuitem value="Home"  icon="/resources/images/report-icon.png" url="Reporting.xhtml"/>
+
+</p:stack>
+</body>
+
+</ui:define>
+</ui:composition>
+
+
+    
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</html>
+<!-- end document-->

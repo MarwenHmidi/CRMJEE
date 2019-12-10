@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+xmlns:f="http://java.sun.com/jsf/core" 
+xmlns:h="http://java.sun.com/jsf/html"
+xmlns:p="http://primefaces.org/ui"
+xmlns:ui="http://java.sun.com/jsf/facelets">
+      
+  <ui:composition template="/Template/Template.xhtml">
+       <ui:define name="content">
+
+<h:head>
+    <!-- Required meta tags-->
+    <meta charset="UTF-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no"/>
+    <meta name="description" content="au theme template"/>
+    <meta name="author" content="Hau Nguyen"/>
+    <meta name="keywords" content="au theme template"/>
+
+   
+    <title>Login</title>
+
+    <!-- Fontfaces CSS-->
+    <link href="css/font-face.css" rel="stylesheet" media="all"></link>
+    <link href="vendor/font-awesome-4.7/css/font-awesome.min.css" rel="stylesheet" media="all"></link>
+    <link href="vendor/font-awesome-5/css/fontawesome-all.min.css" rel="stylesheet" media="all"></link>
+    <link href="vendor/mdi-font/css/material-design-iconic-font.min.css" rel="stylesheet" media="all"></link>
+
+  
+    <link href="vendor/bootstrap-4.1/bootstrap.min.css" rel="stylesheet" media="all"></link>
+
+   
+    <link href="vendor/animsition/animsition.min.css" rel="stylesheet" media="all"></link>
+    <link href="vendor/bootstrap-progressbar/bootstrap-progressbar-3.3.4.min.css" rel="stylesheet" media="all"></link>
+    <link href="vendor/wow/animate.css" rel="stylesheet" media="all"></link>
+    <link href="vendor/css-hamburgers/hamburgers.min.css" rel="stylesheet" media="all"></link>
+    <link href="vendor/slick/slick.css" rel="stylesheet" media="all"></link>
+    <link href="vendor/select2/select2.min.css" rel="stylesheet" media="all"></link>
+    <link href="vendor/perfect-scrollbar/perfect-scrollbar.css" rel="stylesheet" media="all"></link>
+
+  
+    <link href="css/theme.css" rel="stylesheet" media="all"></link>
+
+</h:head>
+
+
+<body class="animsition">
+
+<h:form  enctype="multipart/form-data" id="f">
+
+<h:panelGrid columns="2">
+
+<h:outputText value="packName"/>
+ <h:inputText value="#{packsBean.packName}" autocomplete="off" />
+ 
+ <h:outputText value="startDate" /> 
+     <p:datePicker id="dateb"  value="#{packsBean.startDate}"  showIcon="true" style="width:auto" mindate="#{packsBean.currentday}" autocomplete="off"/>
+ 
+
+
+			
+<h:outputText value="endDate"/> 
+
+    <p:datePicker id="dateA" showIcon="true" value="#{packsBean.endDate}" style="width:auto" mindate="#{packsBean.currentday}" autocomplete="off"/>
+ 
+<h:outputText value="typePack" /> 
+<h:inputText value="#{packsBean.typePack}" autocomplete="off"/> 
+<h:outputText value="description" /> 
+<h:inputText value="#{packsBean.description}" autocomplete="off"/> 
+<h:outputText value="Quantity" /> 
+<h:inputText value="#{packsBean.quantity}" autocomplete="off"/> 
+
+Single file<br />
+      
+    <p:fileUpload value="#{packsBean.file}" mode="simple" skinSimple="true"  />
+    
+    <br />
+<!-- 
+     
+    <p:fileUpload value="#{packsBean.file}" mode="advanced" skinSimple="true"
+    
+    
+    update="messages" auto="true" sizeLimit="100000" allowTypes="/(\.|\/)(gif|jpe?g|png)$/" />
+         
+    <p:growl id="messages" showDetail="true" /> 
+          -->
+      <div class="container">
+  <div class="row">
+    <div class="col">
+            <h:commandButton action="#{packsBean.addPacks()}" value="ADD PACK"  styleClass="btn btn-dark"/> 
+  
+   <p:commandButton value="Reset " update="f" process="@this" action="#{packsBean.reset}" styleClass="btn btn-info" style="margin-right:20px;" />
+  
+  </div>
+          
+          </div></div>
+
+</h:panelGrid>
+
+
+
+</h:form>
+   <p:stack icon="/resources/images/stack.png" expanded="true">
+  <p:menuitem value="Home"  icon="/resources/images/home.png" url="Home.xhtml"/>
+ <p:menuitem value="PackAdd"  icon="/resources/images/packk.png" url="PackAdd.xhtml"/>
+ <p:menuitem value="PackShow" icon="/resources/images/pack.png" url="PackShow.xhtml"/>
+    <p:menuitem value="Reporting"  icon="/resources/images/report-icon.png" url="Reporting.xhtml"/>
+</p:stack>
+<!-- Jquery JS-->
+    <script src="vendor/jquery-3.2.1.min.js"></script>
+    <!-- Bootstrap JS-->
+    <script src="vendor/bootstrap-4.1/popper.min.js"></script>
+    <script src="vendor/bootstrap-4.1/bootstrap.min.js"></script>
+    <!-- Vendor JS       -->
+    <script src="vendor/slick/slick.min.js">
+    </script>
+    <script src="vendor/wow/wow.min.js"></script>
+    <script src="vendor/animsition/animsition.min.js"></script>
+    <script src="vendor/bootstrap-progressbar/bootstrap-progressbar.min.js">
+    </script>
+    <script src="vendor/counter-up/jquery.waypoints.min.js"></script>
+    <script src="vendor/counter-up/jquery.counterup.min.js">
+    </script>
+    <script src="vendor/circle-progress/circle-progress.min.js"></script>
+    <script src="vendor/perfect-scrollbar/perfect-scrollbar.js"></script>
+    <script src="vendor/chartjs/Chart.bundle.min.js"></script>
+    <script src="vendor/select2/select2.min.js">
+    </script>
+
+    <!-- Main JS-->
+    <script src="js/main.js"></script>
+
+</body>
+</ui:define>
+</ui:composition>
+</html>
+<!-- end document-->
